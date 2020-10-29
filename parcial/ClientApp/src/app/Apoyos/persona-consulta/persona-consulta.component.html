@@ -1,0 +1,36 @@
+<div class="row">
+        <div class="col-6">
+          <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="Type to filter">
+        </div>
+      </div>
+      <hr>
+      
+      <table class="table table-striped" *ngIf='personas && personas.length'>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">identificación</th>
+            <th scope="col">Nombres </th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">sexo</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Valor Apoyo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let persona of personas|filtroPersona: searchText; index as i ">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ persona.identificacion }} </td>
+            <td>{{ persona.nombres }}</td>
+            <td>{{ persona.apellidos }}</td>
+            <td>{{persona.sexo  }}</td>
+            <td>{{ persona.edad  }}</td>
+            <td>{{ persona.ayuda.valorApoyo }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    <div class="form-group">
+          <label>Total Apoyo Brindado</label>
+          <input type="text"  name="totalApoyo"/>
+        </div>

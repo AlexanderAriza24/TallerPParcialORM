@@ -1,0 +1,14 @@
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\bin\Debug\netstandard2.0\Logica.deps.json
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\bin\Debug\netstandard2.0\Logica.dll
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\bin\Debug\netstandard2.0\Logica.pdb
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\bin\Debug\netstandard2.0\Datos.dll
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\bin\Debug\netstandard2.0\Entity.dll
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\bin\Debug\netstandard2.0\Entity.pdb
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\bin\Debug\netstandard2.0\Datos.pdb
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\obj\Debug\netstandard2.0\Logica.csprojAssemblyReference.cache
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\obj\Debug\netstandard2.0\Logica.AssemblyInfoInputs.cache
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\obj\Debug\netstandard2.0\Logica.AssemblyInfo.cs
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\obj\Debug\netstandard2.0\Logica.csproj.CoreCompileInputs.cache
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\obj\Debug\netstandard2.0\Logica.csproj.CopyComplete
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\obj\Debug\netstandard2.0\Logica.dll
+C:\Users\AlexAC\Documents\Ejercicios VS Code\PrimerParcial2020-2\Logica\obj\Debug\netstandard2.0\Logica.pdb
