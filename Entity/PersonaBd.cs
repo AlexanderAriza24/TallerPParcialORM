@@ -1,9 +1,10 @@
-﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entity
 {
-    public class Persona
+    public class PersonaBd
     {
+        [Key]
         public string Identificacion {get; set;}
         public string Nombres {get; set;}
         public string Apellidos {get; set;}
@@ -11,6 +12,6 @@ namespace Entity
         public int Edad {get; set;}
         public string Departamento {get; set;}
         public string Ciudad {get; set;}
-        public Ayuda Ayuda {get; set;}
+        public string CodigoAyuda {get; set;}
     }
 }

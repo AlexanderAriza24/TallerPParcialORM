@@ -18,6 +18,7 @@ namespace parcial.Controllers
         {
             _personaService = new PersonaService(context);
         }
+        
         // GET: api/Persona
         [HttpGet]
         public IEnumerable<PersonaViewModel> Gets()
@@ -26,14 +27,12 @@ namespace parcial.Controllers
             return personas;
         }
 
-        // GET: api/Persona/5
         [HttpGet("{identificacion}")]
-        public ActionResult<PersonaViewModel> Get(string identificacion)
+        public ActionResult<bool> VerificarDuplicado(string identificacion)
         {
-            var persona = _personaService.BuscarxIdentificacion(identificacion);
-            if (persona == null) return NotFound();
-            var personaViewModel = new PersonaViewModel(persona);
-            return personaViewModel;
+            var respuesta = _personaService.VerificarDuplicado(identificacion);
+            if(respuesta) return true;
+            return false;
         }
 
         // POST: api/Persona
@@ -47,13 +46,6 @@ namespace parcial.Controllers
                 return BadRequest(response.Mensaje);
             }
             return Ok(response.Persona);
-        }
-        // DELETE: api/Persona/5
-        [HttpDelete("{identificacion}")]
-        public ActionResult<string> Delete(string identificacion)
-        {
-            string mensaje = _personaService.Eliminar(identificacion);
-            return Ok(mensaje);
         }
 
         private Persona MapearPersona(PersonaInputModel personaInput)

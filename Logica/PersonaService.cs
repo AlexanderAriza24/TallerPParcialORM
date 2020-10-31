@@ -18,12 +18,8 @@ namespace Logica
         {
             try
             {
-                var personaBusacada = _context.Personas.Find(persona.Identificacion);
-                if(personaBusacada != null)
-                {
-                    return new GuardarPersonaResponse("Error la persona ya se encuentra registrada");
-                }
-                _context.Personas.Add(persona);
+                PersonaBd personaBd = MapearPersonaBd(persona);
+                _context.Personas.Add(personaBd);
                 _context.SaveChanges();
                 return new GuardarPersonaResponse(persona);
             }
@@ -32,34 +28,54 @@ namespace Logica
                 return new GuardarPersonaResponse($"Error de la Aplicacion: {e.Message}");
             }
         }
+
+        public bool VerificarDuplicado(string Identificacion)
+        {
+            PersonaBd personaBd = _context.Personas.Find(Identificacion);
+            if(personaBd != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public List<Persona> ConsultarTodos()
         {
-            List<Persona> personas = _context.Personas.ToList();
+            List<PersonaBd> personaBds = _context.Personas.ToList();
+            List<Persona> personas = new List<Persona>();
+
+            foreach(PersonaBd personaBd in personaBds)
+            {
+                personas.Add(MapearPersona(personaBd));
+            }
             return personas;
         }
-        public string Eliminar(string identificacion)
+
+        public PersonaBd MapearPersonaBd(Persona persona)
         {
-            try
-            {
-                var persona = _context.Personas.Find(identificacion);
-                if(persona != null)
-                {
-                    _context.Personas.Remove(persona);
-                    _context.SaveChanges();
-                    return ($"El registro {persona.Nombres} se ha eliminado satisfactoriamente.");
-                }else
-                {
-                    return ($"Lo sentimos, {identificacion} no se ha encontrado.");
-                }
-            }
-            catch (Exception e)
-            {
-                return $"Error de la Aplicacion: {e.Message}";
-            }
+            PersonaBd personaBd = new PersonaBd();
+            personaBd.Identificacion = persona.Identificacion;
+            personaBd.Nombres = persona.Nombres;
+            personaBd.Apellidos = persona.Apellidos;
+            personaBd.Edad = persona.Edad;
+            personaBd.Sexo = persona.Sexo;
+            personaBd.Departamento = persona.Departamento;
+            personaBd.Ciudad = persona.Ciudad;
+            personaBd.CodigoAyuda = persona.Ayuda.AyudaId;
+            return personaBd;
         }
-        public Persona BuscarxIdentificacion(string identificacion)
+
+        public Persona MapearPersona(PersonaBd personaBd)
         {
-            Persona persona = _context.Personas.Find(identificacion);
+            Persona persona = new Persona();
+            persona.Identificacion = personaBd.Identificacion;
+            persona.Nombres = personaBd.Nombres;
+            persona.Apellidos = personaBd.Apellidos;
+            persona.Edad = personaBd.Edad;
+            persona.Sexo = personaBd.Sexo;
+            persona.Departamento = personaBd.Departamento;
+            persona.Ciudad = personaBd.Ciudad;
+            persona.Ayuda = _context.Ayudas.Find(personaBd.Identificacion);
             return persona;
         }
     }

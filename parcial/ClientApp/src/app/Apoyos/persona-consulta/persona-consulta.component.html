@@ -23,14 +23,14 @@
             <td>{{ persona.identificacion }} </td>
             <td>{{ persona.nombres }}</td>
             <td>{{ persona.apellidos }}</td>
-            <td>{{persona.sexo  }}</td>
+            <td>{{persona.sexo | uppercase}}</td>
             <td>{{ persona.edad  }}</td>
-            <td>{{ persona.ayuda.valorApoyo }}</td>
+            <td>{{ persona.ayuda.valorAyuda | currency: 'COP'}}</td>
           </tr>
         </tbody>
       </table>
 
     <div class="form-group">
           <label>Total Apoyo Brindado</label>
-          <input type="text"  name="totalApoyo"/>
+          <input class="form-control" type="text" [(ngModel)]="totalApoyo" readonly>
         </div>

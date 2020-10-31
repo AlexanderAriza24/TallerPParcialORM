@@ -2,51 +2,52 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h2>Registro de Personas</h2>
-                <form >
+                <form [formGroup]="formGroupPersona">
                                     
                     <div class="form-group">
                         <label>Identificacion</label>
-                        <input type="text" name="identificacion"  [(ngModel)]="persona.identificacion" class="form-control" />
+                        <input type="text" name="identificacion"  formControlName="identificacion" class="form-control" placeholder="Identificacion"/>
                     </div>
                     <div class="form-group">
                         <label>Nombres</label>
-                        <input type="text"  name="nombre"  [(ngModel)]="persona.nombres" class="form-control" />
+                        <input type="text"  name="nombre"  formControlName="nombres" class="form-control" placeholder="Nombres"/>
                     </div>
                     <div class="form-group">
                             <label>Apellidos</label>
-                            <input type="text"  name="apellido"  [(ngModel)]="persona.apellidos" class="form-control" />
+                            <input type="text"  name="apellido"  formControlName="apellidos" class="form-control" placeholder="Apellidos"/>
                         </div>
                     <div class="form-group">
-                        <label>sexo</label>
-                        <input type="text"  name="sexo"  [(ngModel)]="persona.sexo" class="form-control" />
+                        <label>Sexo F / M</label>
+                        <input type="text"  name="sexo"  formControlName="sexo" class="form-control" placeholder="Sexo"/>
                     </div>
                     <div class="form-group">
                         <label>Edad</label>
-                        <input type="number"  name="edad"  [(ngModel)]="persona.edad" class="form-control" />
+                        <input type="number"  name="edad"  formControlName="edad" class="form-control" placeholder="Edad"/>
                     </div>
                     <div class="form-group">
                         <label>Departamento</label>
-                        <input type="text"  name="departamento"  [(ngModel)]="persona.departamento" class="form-control" />
+                        <input type="text"  name="departamento"  formControlName="departamento" class="form-control" placeholder="Departamento"/>
                     </div>
     <div class="form-group">
                     <label>Ciudad</label>
-                            <input type="text"  name="ciudad"  [(ngModel)]="persona.ciudad" class="form-control" />
+                            <input type="text"  name="ciudad"  formControlName="ciudad" class="form-control" placeholder="Ciudad"/>
                         </div>
-        
+    </form>
+    <form [formGroup]="formGroupAyuda">
         <div class="form-group">
-                                <label>ValorApoyo</label>
-                                <input type="number"  name="valorApoyo"  [(ngModel)]="persona.ayuda.valorApoyo" class="form-control" />
+                                <label>Valor del Apoyo</label>
+                                <input type="number"  name="valorAyuda"  formControlName="valorAyuda" class="form-control" placeholder="Valor Ayuda"/>
                             </div>
             <div class="form-group">
                                     <label>Modalidad</label>
-                                    <input type="text"  name="modalidad"  [(ngModel)]="persona.ayuda.modalidad" class="form-control" />
+                                    <input type="text"  name="modalidad"  formControlName="modalidad" class="form-control" placeholder="Modalidad"/>
                                 </div>
                 <div class="form-group">
                                         <label>Fecha</label>
-                                        <input type="text"  name="fecha"  [(ngModel)]="persona.ayuda.fecha" class="form-control" />
+                                        <input type="text"  name="fecha"  formControlName="fecha" class="form-control" placeholder="Fecha"/> 
                                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary mr-1"(click)="add()">Registrar</button>
+                        <button class="btn btn-primary mr-1"(click)="onSubmit()" [disabled]="formGroupPersona.invalid">Registrar</button>
                         <button class="btn btn-secondary" type="reset">Cancel</button>
                     </div>
                 </form>

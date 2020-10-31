@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(PersonaContext))]
-    [Migration("20201027032004_InitialCreate")]
+    [Migration("20201030173607_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,22 +31,15 @@ namespace Datos.Migrations
                     b.Property<string>("Modalidad")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PersonaId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("ValorApoyo")
+                    b.Property<int>("ValorAyuda")
                         .HasColumnType("int");
 
                     b.HasKey("AyudaId");
 
-                    b.HasIndex("PersonaId")
-                        .IsUnique()
-                        .HasFilter("[PersonaId] IS NOT NULL");
-
-                    b.ToTable("Ayuda");
+                    b.ToTable("Ayudas");
                 });
 
-            modelBuilder.Entity("Entity.Persona", b =>
+            modelBuilder.Entity("Entity.PersonaBd", b =>
                 {
                     b.Property<string>("Identificacion")
                         .HasColumnType("nvarchar(450)");
@@ -55,6 +48,9 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ciudad")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CodigoAyuda")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Departamento")
@@ -72,13 +68,6 @@ namespace Datos.Migrations
                     b.HasKey("Identificacion");
 
                     b.ToTable("Personas");
-                });
-
-            modelBuilder.Entity("Entity.Ayuda", b =>
-                {
-                    b.HasOne("Entity.Persona", null)
-                        .WithOne("Ayuda")
-                        .HasForeignKey("Entity.Ayuda", "PersonaId");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,6 @@
 export class Ayuda {
-    valorApoyo: number;
+    ayudaId: string;
+    valorAyuda: number;
     modalidad: string;
     fecha: string;
 }

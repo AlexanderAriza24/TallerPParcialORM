@@ -6,9 +6,8 @@ namespace Entity
     {
         [Key]
         public string AyudaId {get; set;}
-        public int ValorApoyo {get; set;}
+        public int ValorAyuda {get; set;}
         public string Modalidad {get; set;}
         public string Fecha {get; set;}
-        public string PersonaId {get; set;}
     }
 }

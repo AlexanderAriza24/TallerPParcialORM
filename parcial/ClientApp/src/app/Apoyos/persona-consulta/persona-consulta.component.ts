@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AyudaService } from 'src/app/services/ayuda.service';
 import { PersonaService } from 'src/app/services/persona.service';
 import { Persona } from '../models/persona';
 
@@ -11,12 +12,16 @@ export class PersonaConsultaComponent implements OnInit {
 
   personas: Persona[];
   searchText: string;
-  constructor(private personaService: PersonaService) { }
+  totalApoyo: number;
+  constructor(private personaService: PersonaService, private ayudaService: AyudaService) { }
 
   ngOnInit() {
 
     this.personaService.get().subscribe(result => {
       this.personas = result;
+    });
+    this.ayudaService.totalAyuda().subscribe(r => {
+      this.totalApoyo = r;
     });
   }
 

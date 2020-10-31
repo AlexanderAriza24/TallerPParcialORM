@@ -33,7 +33,15 @@ export class PersonaService {
               tap(_ => this.handleErrorService.log('datos enviados')),
               catchError(this.handleErrorService.handleError<Persona>('Registrar Persona', null))
           );
-  }
+    }
+
+    verificarDuplicado(persona : Persona): Observable<Boolean> {
+      return this.http.get<Boolean>(this.baseUrl + 'api/Persona/' + persona.identificacion)
+          .pipe(
+              tap(_ => this.handleErrorService.log('datos enviados')),
+              catchError(this.handleErrorService.handleError<Boolean>('Verificar Persona', null))
+          );
+    }
 
   /*get(): Persona[]{
     return JSON.parse(localStorage.getItem('datos'));
