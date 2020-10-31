@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
 import { AyudaService } from 'src/app/services/ayuda.service';
 import { PersonaService } from 'src/app/services/persona.service';
 import { Ayuda } from '../models/ayuda';
@@ -16,7 +18,11 @@ export class PersonaRegistroComponent implements OnInit {
   formGroupAyuda: FormGroup;
   persona: Persona;
   ayuda: Ayuda;
-  constructor(private personaService: PersonaService, private ayudaService : AyudaService, private formBuilder : FormBuilder) { }
+  constructor(
+    private personaService: PersonaService, 
+    private ayudaService : AyudaService, 
+    private formBuilder : FormBuilder,
+    private modalService : NgbModal) { }
 
   ngOnInit(){
     
@@ -85,17 +91,23 @@ export class PersonaRegistroComponent implements OnInit {
     this.persona.ayuda = this.ayuda;
     this.personaService.verificarDuplicado(this.persona).subscribe(p => {
       if(p){
-        alert('La persona ya se encuentra registrada');
+        const messageBox = this.modalService.open(AlertModalComponent)
+        messageBox.componentInstance.title = "Resultado Operación";
+        messageBox.componentInstance.message = 'La persona ya se encuentra registrada';
       }else {
         this.ayudaService.verificarAyuda(this.ayuda).subscribe(p => {
           if(p){
-            alert('El valor digitado excede el valor disponible');
+            const messageBox = this.modalService.open(AlertModalComponent)
+          messageBox.componentInstance.title = "Resultado Operación";
+          messageBox.componentInstance.message = 'El valor digitado excede el valor disponible';
           }else {
             this.personaService.post(this.persona).subscribe(p => {
               if (p != null) {
                 this.ayudaService.post(this.ayuda).subscribe(r => {
                   if(r != null) {
-                    alert('Persona Registrada!');
+                    const messageBox = this.modalService.open(AlertModalComponent)
+                    messageBox.componentInstance.title = "Resultado Operación";
+                    messageBox.componentInstance.message = 'Persona creada!!! :-)';
                     this.persona = p;
                   }
                 })

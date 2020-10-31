@@ -47,7 +47,7 @@
                                         <input type="text"  name="fecha"  formControlName="fecha" class="form-control" placeholder="Fecha"/> 
                                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary mr-1"(click)="onSubmit()" [disabled]="formGroupPersona.invalid">Registrar</button>
+                        <button class="btn btn-primary mr-1"(click)="onSubmit()" [disabled]="formGroupPersona.invalid || formGroupAyuda.invalid">Registrar</button>
                         <button class="btn btn-secondary" type="reset">Cancel</button>
                     </div>
                 </form>

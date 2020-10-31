@@ -14,6 +14,8 @@ import { PersonaRegistroComponent } from './Apoyos/persona-registro/persona-regi
 import { AppRoutingModule } from './app-routing.module';
 import { PersonaService } from './services/persona.service';
 import { FiltroPersonaPipe } from './pipe/filtro-persona.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { FiltroPersonaPipe } from './pipe/filtro-persona.pipe';
     FetchDataComponent,
     PersonaConsultaComponent,
     PersonaRegistroComponent,
-    FiltroPersonaPipe
+    FiltroPersonaPipe,
+    AlertModalComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -36,8 +39,10 @@ import { FiltroPersonaPipe } from './pipe/filtro-persona.pipe';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ]),
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
+  entryComponents:[AlertModalComponent],
   providers: [PersonaService],
   bootstrap: [AppComponent]
 })
